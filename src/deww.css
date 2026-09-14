@@ -1,0 +1,1610 @@
+
+/* =========================================================
+   EARTH
+   ========================================================= */
+
+.core-globe {
+  position: absolute;
+  left: 50%;
+  top: 43%;
+  width: 43%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 8;
+
+  /* OCEAN */
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      rgba(110, 220, 255, 0.95) 0%,
+      rgba(32, 135, 205, 0.9) 20%,
+      rgba(5, 58, 110, 0.98) 48%,
+      rgba(1, 12, 30, 1) 78%
+    ),
+    repeating-radial-gradient(
+      circle at 42% 38%,
+      rgba(80, 180, 220, 0.06) 0px,
+      rgba(80, 180, 220, 0.02) 2px,
+      transparent 4px,
+      transparent 9px
+    );
+
+  border: 1px solid rgba(130, 235, 255, 0.9);
+
+  box-shadow:
+    inset -32px -20px 55px rgba(0, 0, 0, 0.9),
+    inset 15px 8px 25px rgba(150, 245, 255, 0.22),
+    0 0 8px rgba(120, 235, 255, 1),
+    0 0 25px rgba(60, 210, 255, 0.8),
+    0 0 55px rgba(30, 170, 255, 0.45),
+    0 0 95px rgba(20, 120, 255, 0.25);
+
+  animation: earthFloat 5s ease-in-out infinite;
+  transform-style: flat;
+}
+
+.globe-surface {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 50%;
+  z-index: 2;
+
+  animation: globeSurfaceRotate 12s linear infinite;
+}
+
+@keyframes globeSurfaceRotate {
+  0% {
+    transform: translateX(0) scaleX(1);
+  }
+
+  25% {
+    transform: translateX(-2%) scaleX(0.97);
+  }
+
+  50% {
+    transform: translateX(-4%) scaleX(0.94);
+  }
+
+  75% {
+    transform: translateX(-2%) scaleX(0.97);
+  }
+
+  100% {
+    transform: translateX(0) scaleX(1);
+  }
+}
+/* =========================================================
+   EARTH ATMOSPHERE
+   ========================================================= */
+
+.core-globe::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      rgba(255, 255, 255, 0.24) 0%,
+      transparent 18%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      transparent 58%,
+      rgba(89, 220, 255, 0.03) 70%,
+      rgba(75, 218, 255, 0.42) 94%,
+      rgba(130, 238, 255, 0.8) 100%
+    );
+
+  box-shadow:
+    inset 0 0 17px rgba(130, 233, 255, 0.42);
+
+  transform: none;
+  filter: none;
+  opacity: 1;
+
+  z-index: 3;
+  pointer-events: none;
+}
+
+
+
+
+/* =========================
+   CLOUD / LIGHT DETAILS
+   ========================= */
+
+.core-globe::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      ellipse 38% 7% at 44% 22%,
+      rgba(255, 255, 255, 0.25),
+      transparent 70%
+    ),
+
+    radial-gradient(
+      ellipse 32% 6% at 64% 58%,
+      rgba(255, 255, 255, 0.16),
+      transparent 70%
+    ),
+
+    radial-gradient(
+      ellipse 25% 5% at 51% 76%,
+      rgba(255, 255, 255, 0.12),
+      transparent 70%
+    ),
+
+    /* NIGHT SIDE */
+    linear-gradient(
+      115deg,
+      transparent 35%,
+      rgba(0, 0, 0, 0.05) 45%,
+      rgba(0, 0, 0, 0.55) 78%,
+      rgba(0, 0, 0, 0.92) 100%
+    );
+
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+
+
+
+/* =========================
+   CLOUD / LIGHT DETAILS
+   ========================= */
+
+.core-globe::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      ellipse 38% 7% at 44% 22%,
+      rgba(255, 255, 255, 0.25),
+      transparent 70%
+    ),
+
+    radial-gradient(
+      ellipse 32% 6% at 64% 58%,
+      rgba(255, 255, 255, 0.16),
+      transparent 70%
+    ),
+
+    radial-gradient(
+      ellipse 25% 5% at 51% 76%,
+      rgba(255, 255, 255, 0.12),
+      transparent 70%
+    ),
+
+    /* NIGHT SIDE */
+    linear-gradient(
+      115deg,
+      transparent 35%,
+      rgba(0, 0, 0, 0.05) 45%,
+      rgba(0, 0, 0, 0.55) 78%,
+      rgba(0, 0, 0, 0.92) 100%
+    );
+
+  mix-blend-mode: screen;
+  pointer-events: none;
+}   
+
+/* =========================================================
+   ATMOSPHERE
+   ========================================================= */
+.core-globe::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse 38% 7% at 44% 22%,
+      rgba(255, 255, 255, 0.16),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 32% 6% at 64% 58%,
+      rgba(255, 255, 255, 0.10),
+      transparent 70%
+    ),
+    linear-gradient(
+      115deg,
+      transparent 35%,
+      rgba(0, 0, 0, 0.05) 45%,
+      rgba(0, 0, 0, 0.55) 78%,
+      rgba(0, 0, 0, 0.92) 100%
+    );
+
+  transform: none;
+  filter: none;
+
+  mix-blend-mode: normal;
+
+  z-index: 4;
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   NIGHT-SIDE SHADOW
+   ========================================================= */
+
+.core-globe::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent 10%,
+      transparent 38%,
+      rgba(0, 0, 0, 0.05) 50%,
+      rgba(0, 0, 0, 0.42) 72%,
+      rgba(0, 0, 0, 0.82) 100%
+    );
+
+  z-index: 4;
+  pointer-events: none;
+}
+
+
+
+
+/* =========================================================
+   HOLOGRAPHIC PLATFORM
+   ========================================================= */
+
+.system-core::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 68%;
+
+  width: 59%;
+  height: 18%;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(127, 237, 255, 0.65) 0%,
+      rgba(61, 204, 255, 0.34) 24%,
+      rgba(37, 153, 255, 0.12) 48%,
+      transparent 74%
+    );
+
+  box-shadow:
+    0 0 12px rgba(109, 229, 255, 0.8),
+    0 0 32px rgba(67, 203, 255, 0.48),
+    0 0 70px rgba(41, 167, 255, 0.2);
+
+  z-index: 2;
+
+  animation: platformGlow 3s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   PARTICLES
+   ========================================================= */
+
+.core-particle {
+  position: absolute;
+
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+
+  background: #8eeeff;
+
+  box-shadow:
+    0 0 7px #8eeeff,
+    0 0 18px rgba(99, 222, 255, 0.85);
+
+  z-index: 15;
+}
+
+.particle-one {
+  left: 12%;
+  top: 42%;
+
+  animation: particleOne 5s ease-in-out infinite;
+}
+
+.particle-two {
+  right: 11%;
+  top: 51%;
+
+  animation: particleTwo 6s ease-in-out infinite;
+}
+
+.particle-three {
+  left: 48%;
+  bottom: 17%;
+
+  animation: particleThree 5.5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   CORE LABELS
+   ========================================================= */
+
+.core-label {
+  position: absolute;
+
+  z-index: 20;
+
+  font-family: "Courier New", monospace;
+
+  font-size: 8px;
+  font-weight: 600;
+
+  letter-spacing: 0.16em;
+
+  color: rgba(135, 235, 255, 0.86);
+
+  text-shadow:
+    0 0 7px rgba(83, 218, 255, 0.75);
+}
+
+.label-ideas {
+  left: 7%;
+  top: 47%;
+}
+
+.label-systems {
+  right: 2%;
+  top: 32%;
+}
+
+.label-impact {
+  left: 7%;
+  bottom: 27%;
+}
+
+.label-people {
+  right: 10%;
+  bottom: 30%;
+}
+
+
+/* =========================================================
+   EARTH ANIMATIONS
+   ========================================================= */
+
+@keyframes earthFloat {
+  0%,
+  100% {
+    transform:
+      translate(-50%, -50%)
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translate(-50%, -50%)
+      translateY(-5px);
+  }
+}
+
+@keyframes earthRingOne {
+  from {
+    transform:
+      translate(-50%, -50%)
+      rotateX(72deg)
+      rotateZ(0deg);
+  }
+
+  to {
+    transform:
+      translate(-50%, -50%)
+      rotateX(72deg)
+      rotateZ(360deg);
+  }
+}
+
+@keyframes earthRingTwo {
+  from {
+    transform:
+      translate(-50%, -50%)
+      rotateX(72deg)
+      rotateZ(32deg);
+  }
+
+  to {
+    transform:
+      translate(-50%, -50%)
+      rotateX(72deg)
+      rotateZ(392deg);
+  }
+}
+
+@keyframes earthRingThree {
+  from {
+    transform:
+      translate(-50%, -50%)
+      rotateX(72deg)
+      rotateZ(-34deg);
+  }
+
+  to {
+    transform:
+      translate(-50%, -50%)
+      rotateX(72deg)
+      rotateZ(326deg);
+  }
+}
+
+@keyframes platformGlow {
+  0%,
+  100% {
+    opacity: 0.55;
+
+    transform:
+      translateX(-50%)
+      scale(0.95);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      translateX(-50%)
+      scale(1.05);
+  }
+}
+
+
+/* =========================================================
+   RIGHT FLOATING NAV
+   ========================================================= */
+
+.home-floating-nav {
+  position: absolute;
+
+  right: 2.8%;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  display: flex;
+  flex-direction: column;
+
+  z-index: 20;
+
+  pointer-events: auto;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: rgba(2, 7, 12, 0.42);
+
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 15px 50px rgba(0, 0, 0, 0.25);
+}
+
+.floating-nav-item {
+  width: 78px;
+  height: 82px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  border: 0;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+  background: transparent;
+
+  color: rgba(255, 255, 255, 0.48);
+
+  cursor: pointer;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease;
+}
+
+.floating-nav-item:last-child {
+  border-bottom: 0;
+}
+
+.floating-nav-item:hover {
+  color: #ffffff;
+
+  background: rgba(115, 228, 255, 0.05);
+}
+
+.floating-nav-item.active {
+  color: var(--cyan);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(115, 228, 255, 0.08),
+      rgba(115, 228, 255, 0.02)
+    );
+
+  box-shadow:
+    inset 2px 0 0 var(--cyan);
+}
+
+.floating-icon {
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 19px;
+
+  line-height: 1;
+
+  color: inherit;
+}
+
+.floating-nav-item small {
+  font-family: "Courier New", monospace;
+
+  font-size: 7px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.13em;
+}
+
+
+/* =========================================================
+   DATA / STATS
+   ========================================================= */
+
+.home-data {
+  position: absolute;
+
+  left: 7.5%;
+  bottom: 5.5%;
+
+  display: flex;
+  align-items: center;
+
+  z-index: 20;
+}
+
+.data-item {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+
+  min-width: 120px;
+}
+
+.data-item strong {
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.data-item span {
+  font-family: "Courier New", monospace;
+
+  font-size: 7px;
+
+  letter-spacing: 0.12em;
+
+  color: rgba(115, 228, 255, 0.65);
+}
+
+.data-divider {
+  width: 1px;
+  height: 32px;
+
+  margin: 0 18px;
+
+  background: rgba(255, 255, 255, 0.13);
+}
+
+
+/* =========================================================
+   EXPLORE INDICATOR
+   ========================================================= */
+
+.home-explore-indicator {
+  position: absolute;
+
+  left: 50%;
+  bottom: 4%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  z-index: 20;
+
+  font-family: "Courier New", monospace;
+
+  font-size: 7px;
+
+  letter-spacing: 0.18em;
+
+  color: rgba(255, 255, 255, 0.48);
+
+  white-space: nowrap;
+}
+
+.home-explore-indicator b {
+  font-size: 13px;
+
+  font-weight: 400;
+
+  color: var(--cyan);
+}
+
+.mouse-outline {
+  width: 15px;
+  height: 24px;
+
+  display: flex;
+  justify-content: center;
+
+  padding-top: 4px;
+
+  border: 1px solid rgba(255, 255, 255, 0.45);
+
+  border-radius: 9px;
+}
+
+.mouse-outline span {
+  width: 2px;
+  height: 5px;
+
+  border-radius: 2px;
+
+  background: var(--cyan);
+
+  animation: mouseMove 1.5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   PHILOSOPHY — TOP RIGHT
+   ========================================================= */
+
+.home-philosophy {
+  position: absolute;
+
+  right: 5%;
+  top: 8%;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 11px;
+
+  z-index: 20;
+}
+
+.home-philosophy > span {
+  width: 2px;
+  height: 55px;
+
+  background: var(--cyan);
+
+  box-shadow:
+    0 0 12px rgba(115, 228, 255, 0.5);
+}
+
+.home-philosophy > div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.home-philosophy strong {
+  font-family: "Courier New", monospace;
+
+  font-size: 8px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.16em;
+
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.home-philosophy strong:first-child {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes homeDotPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+
+
+
+
+@keyframes particleOne {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: translate(20px, -15px);
+    opacity: 1;
+  }
+}
+
+@keyframes particleTwo {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: translate(-18px, 15px);
+    opacity: 1;
+  }
+}
+
+@keyframes particleThree {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.35;
+  }
+
+  50% {
+    transform: translate(10px, -20px);
+    opacity: 1;
+  }
+}
+
+@keyframes mouseMove {
+  0% {
+    transform: translateY(0);
+    opacity: 0.2;
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+}
+
+
+/* =========================================================
+   1100px
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .home-hero {
+    left: 7%;
+    width: min(560px, 48vw);
+  }
+
+  .system-core {
+    right: 3%;
+    width: 40vw;
+  }
+
+  .home-floating-nav {
+    right: 1.5%;
+  }
+
+  .floating-nav-item {
+    width: 68px;
+    height: 72px;
+  }
+}
+
+
+/* =========================================================
+   900px
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .home-hero {
+    left: 6%;
+    width: 55vw;
+  }
+
+  .home-title {
+    font-size: clamp(58px, 8.5vw, 88px);
+  }
+
+  .system-core {
+    right: -5%;
+    width: 46vw;
+
+    opacity: 0.65;
+  }
+
+  .home-philosophy {
+    right: 8%;
+  }
+
+  .home-data {
+    left: 6%;
+  }
+
+  .data-item {
+    min-width: 95px;
+  }
+
+  .data-divider {
+    margin: 0 12px;
+  }
+}
+
+
+/* =========================================================
+   760px — TABLET / MOBILE
+   ========================================================= */
+
+@media (max-width: 760px) {
+  .home-section-indicator {
+    left: 4%;
+    top: 15%;
+  }
+
+  .section-track {
+    height: 100px;
+  }
+
+  .home-hero {
+    left: 8%;
+    right: 8%;
+
+    top: 48%;
+
+    width: auto;
+
+    transform: translateY(-50%);
+  }
+
+  .home-eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.16em;
+  }
+
+  .home-title {
+    font-size: clamp(52px, 15vw, 78px);
+  }
+
+  .home-description {
+    max-width: 390px;
+
+    font-size: 13px;
+
+    margin-top: 24px;
+  }
+
+  .home-buttons {
+    margin-top: 24px;
+  }
+
+  .home-button {
+    width: 145px;
+    height: 46px;
+  }
+
+  .system-core {
+    right: -25%;
+    top: 45%;
+
+    width: 65vw;
+
+    opacity: 0.25;
+  }
+
+  .home-floating-nav {
+    right: 3%;
+    top: auto;
+    bottom: 4%;
+
+    transform: none;
+
+    flex-direction: row;
+  }
+
+  .floating-nav-item {
+    width: 48px;
+    height: 48px;
+  }
+
+  .floating-nav-item small {
+    font-size: 6px;
+  }
+
+  .floating-icon {
+    font-size: 14px;
+  }
+
+  .home-data {
+    display: none;
+  }
+
+  .home-explore-indicator {
+    display: none;
+  }
+
+  .home-philosophy {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 520px) {
+  .home-section-indicator {
+    display: none;
+  }
+
+  .home-hero {
+    left: 8%;
+    right: 8%;
+  }
+
+  .home-eyebrow {
+    margin-bottom: 17px;
+  }
+
+  .home-title {
+    font-size: clamp(46px, 17vw, 70px);
+  }
+
+  .home-description {
+    max-width: 330px;
+
+    font-size: 12px;
+  }
+
+  .home-buttons {
+    gap: 8px;
+  }
+
+  .home-button {
+    width: 135px;
+    min-width: 0;
+
+    padding: 0 14px;
+
+    font-size: 8px;
+  }
+
+  .system-core {
+    right: -40%;
+    width: 75vw;
+
+    opacity: 0.15;
+  }
+
+  .home-floating-nav {
+    right: 4%;
+  }
+
+  .floating-nav-item {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+
+/* =========================================================
+   SHORT DESKTOP SCREENS
+   ========================================================= */
+
+@media (max-height: 750px) and (min-width: 761px) {
+  .home-hero {
+    top: 48%;
+  }
+
+  .home-eyebrow {
+    margin-bottom: 15px;
+  }
+
+  .home-title {
+    font-size: clamp(60px, 6.5vw, 96px);
+  }
+
+  .home-description {
+    margin-top: 23px;
+  }
+
+  .home-buttons {
+    margin-top: 22px;
+  }
+
+  .system-core {
+    width: min(35vw, 480px);
+  }
+
+  .home-data {
+    bottom: 4%;
+  }
+}
+
+.system-core > * {
+  visibility: visible !important;
+}
+
+.core-ring,
+.core-particle,
+.core-label {
+  visibility: hidden !important;
+}
+
+.system-core::before {
+  display: none !important;
+}
+
+.ring-one {
+  visibility: visible !important;
+}
+
+.ring-two,
+.ring-three {
+  visibility: hidden !important;
+}
+
+
+
+
+.ring-one {
+  visibility: hidden !important;
+}
+
+.ring-two {
+  visibility: visible !important;
+
+  width: 58% !important;
+  height: 18% !important;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(12deg) !important;
+
+  animation: none !important;
+}
+
+.ring-three {
+  visibility: hidden !important;
+}
+.core-ring {
+  animation: none !important;
+}
+
+.ring-one {
+  visibility: visible !important;
+
+  width: 62% !important;
+  height: 19% !important;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(-12deg) !important;
+}
+
+.ring-two {
+  visibility: visible !important;
+
+  width: 58% !important;
+  height: 17% !important;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(12deg) !important;
+}
+
+.ring-three {
+  visibility: visible !important;
+
+  width: 54% !important;
+  height: 15% !important;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(-18deg) !important;
+}
+
+.core-ring {
+  visibility: hidden !important;
+  animation: none !important;
+}
+
+.ring-one {
+  visibility: visible !important;
+
+  width: 72% !important;
+  height: 28% !important;
+
+  top: 43% !important;
+  left: 50% !important;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(-12deg) !important;
+}
+.core-ring {
+  animation: none !important;
+}
+
+.ring-one {
+  visibility: visible !important;
+
+  width: 72% !important;
+  height: 28% !important;
+
+  top: 43% !important;
+  left: 50% !important;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(-12deg) !important;
+}
+
+.ring-two {
+  visibility: visible !important;
+
+  width: 64% !important;
+  height: 22% !important;
+
+  top: 43% !important;
+  left: 50% !important;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(12deg) !important;
+}
+
+.ring-three {
+  visibility: hidden !important;
+}
+.ring-three {
+  visibility: visible !important;
+
+  width: 56% !important;
+  height: 16% !important;
+
+  top: 43% !important;
+  left: 50% !important;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(-18deg) !important;
+
+  animation: none !important;
+}
+.ring-three {
+  opacity: 0.35 !important;
+}
+
+.core-particle,
+.core-label {
+  visibility: visible !important;
+}
+
+.globe-clouds {
+  position: absolute;
+  inset: -3%;
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse at 22% 30%,
+      rgba(255, 255, 255, 0.18) 0%,
+      transparent 11%
+    ),
+    radial-gradient(
+      ellipse at 48% 19%,
+      rgba(255, 255, 255, 0.13) 0%,
+      transparent 13%
+    ),
+    radial-gradient(
+      ellipse at 67% 31%,
+      rgba(255, 255, 255, 0.16) 0%,
+      transparent 12%
+    ),
+    radial-gradient(
+      ellipse at 35% 52%,
+      rgba(255, 255, 255, 0.11) 0%,
+      transparent 14%
+    ),
+    radial-gradient(
+      ellipse at 76% 60%,
+      rgba(255, 255, 255, 0.10) 0%,
+      transparent 13%
+    ),
+    radial-gradient(
+      ellipse at 48% 76%,
+      rgba(255, 255, 255, 0.09) 0%,
+      transparent 15%
+    );
+
+  filter: blur(2.2px);
+  opacity: 0.55;
+  mix-blend-mode: screen;
+
+  z-index: 3;
+  pointer-events: none;
+}
+
+
+
+/* =========================================================
+   CSS EARTH LANDMASSES
+   ========================================================= */
+
+.continent {
+  position: absolute;
+  display: block;
+
+  background:
+    radial-gradient(
+      circle at 28% 22%,
+      rgba(205, 255, 185, 0.48) 0%,
+      rgba(145, 205, 125, 0.30) 24%,
+      transparent 52%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(125, 180, 105, 0.82) 0%,
+      rgba(76, 135, 72, 0.72) 45%,
+      rgba(31, 76, 51, 0.68) 75%,
+      rgba(8, 35, 30, 0.62) 100%
+    );
+
+  box-shadow:
+    inset 3px 3px 7px rgba(220, 255, 195, 0.18),
+    inset -5px -7px 12px rgba(0, 18, 10, 0.58),
+    0 0 5px rgba(120, 190, 110, 0.10);
+
+  opacity: 0.72;
+
+  filter:
+    blur(0.2px)
+    saturate(0.88);
+
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* NORTH AMERICA */
+
+.continent-north-america {
+  left: 7%;
+  top: 14%;
+  width: 40%;
+  height: 32%;
+
+  clip-path: polygon(
+    3% 22%,
+    10% 14%,
+    19% 11%,
+    27% 5%,
+    39% 8%,
+    48% 15%,
+    58% 18%,
+    66% 24%,
+    76% 25%,
+    84% 32%,
+    96% 37%,
+    91% 45%,
+    82% 49%,
+    74% 46%,
+    67% 52%,
+    60% 49%,
+    55% 57%,
+    49% 62%,
+    43% 58%,
+    39% 52%,
+    34% 48%,
+    29% 45%,
+    24% 40%,
+    18% 39%,
+    13% 34%,
+    7% 34%,
+    2% 29%
+  );
+}
+
+
+
+/* SOUTH AMERICA */
+
+.continent-south-america {
+  left: 31%;
+  top: 43%;
+  width: 20%;
+  height: 40%;
+
+  clip-path: polygon(
+    43% 0%,
+    56% 6%,
+    63% 14%,
+    60% 23%,
+    68% 32%,
+    63% 42%,
+    69% 51%,
+    64% 61%,
+    61% 72%,
+    55% 82%,
+    51% 92%,
+    43% 100%,
+    35% 91%,
+    32% 82%,
+    27% 73%,
+    29% 63%,
+    22% 54%,
+    27% 45%,
+    23% 36%,
+    28% 27%,
+    25% 18%,
+    32% 10%,
+    35% 4%
+  );
+}
+
+
+
+/* EUROPE */
+
+.continent-europe {
+  left: 49%;
+  top: 17%;
+  width: 22%;
+  height: 18%;
+
+  clip-path: polygon(
+    3% 42%,
+    10% 31%,
+    18% 28%,
+    24% 20%,
+    32% 22%,
+    38% 13%,
+    47% 17%,
+    55% 9%,
+    64% 17%,
+    74% 14%,
+    84% 22%,
+    94% 30%,
+    98% 39%,
+    90% 47%,
+    82% 45%,
+    75% 53%,
+    68% 49%,
+    61% 61%,
+    53% 57%,
+    46% 68%,
+    38% 63%,
+    30% 71%,
+    22% 62%,
+    15% 65%,
+    9% 55%,
+    3% 56%
+  );
+}
+
+
+
+/* AFRICA */
+.continent-africa {
+  left: 49%;
+  top: 34%;
+  width: 25%;
+  height: 41%;
+
+  clip-path: polygon(
+    39% 0%,
+    51% 5%,
+    61% 13%,
+    67% 23%,
+    64% 34%,
+    71% 44%,
+    67% 54%,
+    63% 65%,
+    58% 76%,
+    52% 88%,
+    46% 100%,
+    37% 90%,
+    33% 80%,
+    27% 69%,
+    20% 59%,
+    23% 49%,
+    18% 39%,
+    23% 29%,
+    21% 20%,
+    27% 11%,
+    31% 4%
+  );
+}
+
+/* ASIA */
+
+
+.continent-asia {
+  left: 61%;
+  top: 18%;
+  width: 36%;
+  height: 32%;
+
+  clip-path: polygon(
+    2% 34%,
+    9% 25%,
+    18% 22%,
+    27% 25%,
+    35% 16%,
+    45% 10%,
+    56% 7%,
+    66% 12%,
+    75% 18%,
+    85% 20%,
+    94% 28%,
+    99% 38%,
+    95% 46%,
+    87% 50%,
+    79% 47%,
+    72% 55%,
+    65% 52%,
+    59% 64%,
+    51% 59%,
+    44% 70%,
+    36% 64%,
+    28% 69%,
+    21% 58%,
+    14% 55%,
+    8% 48%,
+    3% 43%
+  );
+}
+
+
+
+/* AUSTRALIA */
+
+.continent-australia {
+  left: 68%;
+  top: 62%;
+  width: 24%;
+  height: 19%;
+
+  clip-path: polygon(
+    8% 34%,
+    18% 23%,
+    30% 15%,
+    44% 10%,
+    58% 14%,
+    72% 21%,
+    87% 30%,
+    96% 43%,
+    92% 56%,
+    84% 67%,
+    70% 78%,
+    56% 86%,
+    41% 83%,
+    28% 77%,
+    18% 68%,
+    9% 56%,
+    4% 44%
+  );
+}
+
+.globe-city-lights {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.city-light {
+  position: absolute;
+  display: block;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: rgba(255, 225, 130, 0.95);
+  box-shadow:
+    0 0 3px rgba(255, 220, 120, 0.9),
+    0 0 7px rgba(255, 190, 80, 0.45);
+}
+
+/* Dark-side city clusters */
+.light-1 {
+  left: 67%;
+  top: 39%;
+}
+
+.light-2 {
+  left: 73%;
+  top: 44%;
+}
+
+.light-3 {
+  left: 78%;
+  top: 51%;
+}
+
+.light-4 {
+  left: 70%;
+  top: 58%;
+}
+
+.light-5 {
+  left: 63%;
+  top: 65%;
+}
+
+.light-6 {
+  left: 80%;
+  top: 61%;
+}
+
+
