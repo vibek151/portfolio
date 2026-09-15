@@ -330,14 +330,14 @@ function App() {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8001/api/assistant",
+        "https://vibeks-ai-server.onrender.com/api/assistant",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            question: userQuestion,
+            question: userMessage,
           }),
         }
       );
