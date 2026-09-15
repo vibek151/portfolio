@@ -361,6 +361,8 @@ Respond naturally to the visitor.
             headers={
                 "Authorization": f"Bearer {AI_API_KEY}",
                 "Content-Type": "application/json",
+                "HTTP-Referer": "https://portfolio-lxhu.onrender.com",
+                "X-Title": "Vibek Portfolio Assistant",
             },
             json={
                 "model": MODEL,
