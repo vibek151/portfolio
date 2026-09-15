@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-
+import os
 import requests
 import re
 import time
@@ -12,15 +12,21 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=[
+        "https://vibeks-ai-server.onrender.com",
+        "http://localhost:5173",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 
-MODEL = "qwen2.5:0.5b-instruct"
-OLLAMA_URL = "http://127.0.0.1:11434/api/chat"
+
+
+AI_API_KEY = os.getenv("AI_API_KEY")
+AI_API_URL = os.getenv("AI_API_URL")
+MODEL = os.getenv("AI_MODEL")
 
 
 class Question(BaseModel):
@@ -351,11 +357,13 @@ Respond naturally to the visitor.
     try:
 
         response = requests.post(
-            OLLAMA_URL,
-
+            AI_API_URL,
+            headers={
+                "Authorization": f"Bearer {AI_API_KEY}",
+                "Content-Type": "application/json",
+            },
             json={
                 "model": MODEL,
-
                 "messages": [
                     {
                         "role": "system",
@@ -366,16 +374,9 @@ Respond naturally to the visitor.
                         "content": user_message,
                     },
                 ],
-
-                "stream": False,
-                "think": False,
-
-                "options": {
-                    "temperature": 0.2,
-                    "num_predict": 80,
-                },
+                "temperature": 0.2,
+                "max_tokens": 80,
             },
-
             timeout=120,
         )
 
@@ -397,15 +398,12 @@ Respond naturally to the visitor.
 
         result = response.json()
 
-        message = result.get(
-            "message",
-            {}
+        answer = (
+            result.get("choices", [{}])[0]
+            .get("message", {})
+            .get("content", "")
+            .strip()
         )
-
-        answer = message.get(
-            "content",
-            ""
-        ).strip()
 
 
         print("OLLAMA ANSWER:", answer)

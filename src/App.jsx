@@ -555,7 +555,7 @@ function App() {
                 </span>
 
               </div> */}
-              <div className="core-globe">
+              {/* <div className="core-globe">
 
                 <div className="globe-surface">
 
@@ -583,8 +583,40 @@ function App() {
                   V
                 </span>
 
-              </div>
+              </div> */}
+              <div className="core-globe holographic-globe">
 
+                <div className="globe-surface">
+
+                  <div className="globe-atmosphere" />
+                  <div className="globe-grid" />
+
+                  <span className="continent continent-north-america" />
+                  <span className="continent continent-south-america" />
+                  <span className="continent continent-europe" />
+                  <span className="continent continent-africa" />
+                  <span className="continent continent-asia" />
+                  <span className="continent continent-australia" />
+
+                  <span className="globe-clouds" />
+
+                  <span className="globe-city-lights">
+                    <i className="city-light light-1" />
+                    <i className="city-light light-2" />
+                    <i className="city-light light-3" />
+                    <i className="city-light light-4" />
+                    <i className="city-light light-5" />
+                    <i className="city-light light-6" />
+                  </span>
+
+                </div>
+
+                <div className="globe-glow" />
+                <div className="globe-highlight" />
+
+                {/* <span className="globe-v">V</span> */}
+
+              </div>
 
               <span className="core-label label-ideas">
                 IDEAS
