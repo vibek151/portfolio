@@ -13,7 +13,7 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://vibeks-ai-server.onrender.com",
+        "https://vibeks-world.onrender.com",
         "http://localhost:5173",
     ],
     allow_credentials=True,
@@ -424,12 +424,8 @@ Respond naturally to the visitor.
 
 
     except Exception as error:
-
-        print("OLLAMA ERROR:", error)
+        print("OPENROUTER ERROR:", repr(error))
 
         return {
-            "answer": (
-                "The portfolio assistant is currently "
-                "unavailable. Please try again."
-            )
+            "answer": "The portfolio assistant is currently unavailable. Please try again."
         }
